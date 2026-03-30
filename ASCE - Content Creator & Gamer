@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCE - Content Creator & Gamer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00d4ff;
+            --secondary: #ff006e;
+            --accent: #8338ec;
+            --dark-bg: #0a0e27;
+            --card-bg: #16213e;
+            --text-light: #e0e0ff;
+            --text-muted: #a0aec0;
+            --success: #00ff88;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1f3a 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-attachment: fixed;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: 2px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 2rem 6rem;
+            text-align: left;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            animation: slideInUp 0.8s ease;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat {
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Space Mono', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(255, 0, 110, 0.3);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+            z-index: 1;
+        }
+
+
+
+        .hexagon {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            border: 3px solid var(--primary);
+            overflow: hidden;
+        }
+
+        .profile-image {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 20%;
+            display: block;
+            box-shadow:
+                0 0 0 4px rgba(0, 212, 255, 0.18),
+                0 0 35px rgba(131, 56, 236, 0.35),
+                0 18px 45px rgba(0, 0, 0, 0.35);
+            animation: heroFloat 5s ease-in-out infinite;
+            border: 3px solid var(--primary);
+            transition: transform 0.45s ease, box-shadow 0.45s ease, filter 0.45s ease;
+            position: relative;
+            z-index: 3;
+            background: #11172d;
+        }
+
+        .profile-image:hover {
+            transform: translateY(-8px) scale(1.03);
+            filter: brightness(1.05);
+            box-shadow:
+                0 0 0 4px rgba(0, 212, 255, 0.24),
+                0 0 55px rgba(131, 56, 236, 0.45),
+                0 28px 70px rgba(0, 0, 0, 0.45);
+        }
+
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(131, 56, 236, 0.22) 0%, rgba(0, 212, 255, 0.12) 45%, rgba(0, 212, 255, 0) 72%);
+            filter: blur(10px);
+            animation: pulseGlow 4.5s ease-in-out infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-16px); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.75; }
+            50% { transform: scale(1.06); opacity: 1; }
+        }
+
+            50% {
+                transform: translateY(-16px);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.75;
+            }
+            50% {
+                transform: scale(1.06);
+                opacity: 1;
+            }
+        }
+
+
+        
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Platforms Section */
+        .platforms {
+            max-width: 1400px;
+            margin: 6rem auto 0;
+            padding: 5rem 2rem;
+            background: rgba(22, 33, 62, 0.5);
+            border-top: 2px solid var(--accent);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .platforms h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .platforms h2 span {
+            color: var(--primary);
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .platform-card {
+            background: linear-gradient(135deg, rgba(131, 56, 236, 0.1), rgba(0, 212, 255, 0.1));
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .platform-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+            background: linear-gradient(135deg, rgba(131, 56, 236, 0.15), rgba(0, 212, 255, 0.15));
+        }
+
+        .platform-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+        }
+
+        .platform-icon svg {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .platform-card:hover .platform-icon svg {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .platform-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .platform-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Content Creator Section */
+        .creator-spotlight {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .spotlight-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .spotlight-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .spotlight-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            border: 2px solid rgba(0, 212, 255, 0.1);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .content-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .content-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .content-type {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .content-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .content-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Skills Section */
+        .skills {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            background: rgba(22, 33, 62, 0.3);
+            border-radius: 12px;
+            margin: 3rem auto;
+        }
+
+        .skills h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(131, 56, 236, 0.3), rgba(0, 212, 255, 0.3));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            color: var(--dark-bg);
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .social-btn:hover .social-icon {
+            color: var(--dark-bg);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 39, 0.9);
+            border-top: 2px solid var(--primary);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 4rem 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+
+            .hexagon {
+                width: 200px;
+                height: 200px;
+                font-size: 3rem;
+            }
+
+            .profile-image {
+                width: 240px;
+                height: 240px;
+            }
+
+            .hero-visual::before {
+                width: 270px;
+                height: 270px;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+            }
+
+            .platforms h2 {
+                font-size: 1.8rem;
+            }
+
+            .platform-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="#" class="logo">ᴀsᴄᴇ</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#platforms">Platforms</a></li>
+                <li><a href="#content">Content</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <h1>Hey, I'm <span>ᴀsᴄᴇ</span></h1>
+            <p>Gaming enthusiast • Content Creator • Digital Creator from Nepal 🐝</p>
+            <p>Crafting gaming content, streaming adventures, and building a community of fellow gamers and creators. Join me on this digital journey!</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">743+</div>
+                    <div class="stat-label">Discord Members</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">Multi</div>
+                    <div class="stat-label">Platform Creator</div>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#contact" class="btn">Get In Touch</a>
+                <a href="https://discord.gg/dFHabYy49Y" class="btn btn-secondary">Join Discord</a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <img src="./profile.jpg" alt="ASCE - Creative Lalit" class="profile-image">
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section class="platforms" id="platforms">
+        <h2>Find Me <span>Everywhere</span></h2>
+        <div class="platform-grid">
+            <a href="https://www.instagram.com/asce.exc" class="platform-card">
+                <div class="platform-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849s.013-3.583.07-4.849c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.646-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.016-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+                    </svg>
+                </div>
+                <h3>Instagram</h3>
+                <p>Daily gaming & life updates</p>
+            </a>
+            <a href="https://www.youtube.com/@ascekr" class="platform-card">
+                <div class="platform-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </div>
+                <h3>YouTube</h3>
+                <p>Gaming videos & streams</p>
+            </a>
+            <a href="https://www.facebook.com/creativelalit07" class="platform-card">
+                <div class="platform-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </div>
+                <h3>Facebook</h3>
+                <p>Community & updates</p>
+            </a>
+            <a href="https://discord.gg/dFHabYy49Y" class="platform-card">
+                <div class="platform-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.317 4.3671c-1.8345-.9037-3.8014-1.5486-5.8583-1.7987-.0207-.0042-.0414-.0081-.0621-.0126-.2662-.0536-.5324-.1068-.7986-.1598-.2662-.0536-.5324-.1068-.7986-.1598-1.6414-.3288-3.282-.6576-4.9229-.9864-1.0682-.2138-2.1363-.4276-3.2045-.6414 0-.0168-.0084-.0336-.0168-.0504-.9352-.1868-1.8704-.3735-2.8056-.5603l-1.397-.2798c-.3494-.0699-.6988-.1399-1.0482-.2098-.0504-.0101-.1008-.0202-.1512-.0303-.1512-.0303-.3024-.0605-.4536-.0908-.3024-.0605-.6047-.121-.9071-.1815-.3024-.0605-.6047-.121-.9071-.1815-1.1286-.2258-2.2572-.4516-3.3858-.6774-2.3758-.4756-4.7516-.9512-7.1274-1.4268 0-.0336-.0168-.0672-.0504-.1008-.1008-.2016-.2016-.4032-.3024-.6048-.3528-.7056-.7056-1.4112-1.0584-2.1168l-.504-1.008c-.0168-.0336-.0504-.0672-.0504-.1008 0-.0168.0168-.0336.0504-.0336.504.0504 1.008.1008 1.512.1512.0504 0 .0899.0099.1294.0198.5544.0555 1.1088.111 1.6632.1665.3024.0302.6048.0605.9071.0908.504.0504.9071.0908 1.3102.1312 0 .0 .0084.0084.0168.0084.6048.0605 1.2096.121 1.8144.1815.3024.0302.6048.0605.9071.0908.504.0504 1.0080.1008 1.512.1512 1.3104.1312 2.6208.2624 3.9312.3936.3024.0302.6048.0605.9071.0908.504.0504 1.0080.1008 1.512.1512 1.3104.1312 2.6208.2624 3.9312.3936.3024.0302.6048.0605.9071.0908.504.0504 1.0080.1008 1.512.1512 1.3104.1312 2.6208.2624 3.9312.3936.3024.0302.6048.0605.9071.0908.504.0504 1.0080.1008 1.512.1512l2.6208.2624c1.3104.1312 2.6208.2624 3.9312.3936.3024.0302.6048.0605.9071.0908.504.0504 1.0080.1008 1.512.1512 1.3104.1312 2.6208.2624 3.9312.3936.3024.0302.6048.0605.9071.0908.504.0504 1.0080.1008 1.512.1512.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302v1.0080c0 .5040-.4536.9576-.9576.9576h-1.5120c-.0504 0-.1008-.0101-.1512-.0202l-.5544-1.1088c-.0504-.1008-.1512-.1512-.2520-.1512h-.5544c-.1008 0-.2016.0504-.2520.1512l-.5544 1.1088c-.0504.1008-.1512.1512-.2520.1512h-2.0160c-.0504 0-.1008-.0101-.1512-.0202-.0504-.0101-.1008-.0202-.1512-.0302v.5040c0 .5040-.4536.9576-.9576.9576h-1.512c-.0504 0-.1008-.0101-.1512-.0202-.0504-.0101-.1008-.0202-.1512-.0302v.5040c0 .5040-.4536.9576-.9576.9576h-1.512c-.0504 0-.1008-.0101-.1512-.0202-.0504-.0101-.1008-.0202-.1512-.0302v.5040c0 .5040-.4536.9576-.9576.9576h-1.512c-.0504 0-.1008-.0101-.1512-.0202-.0504-.0101-.1008-.0202-.1512-.0302v.5040c0 .5040-.4536.9576-.9576.9576h-1.512c-.0504 0-.1008-.0101-.1512-.0202-.0504-.0101-.1008-.0202-.1512-.0302v.5040c0 .5040-.4536.9576-.9576.9576h-1.512c-.0504 0-.1008-.0101-.1512-.0202-.0504-.0101-.1008-.0202-.1512-.0302v.5040c0 .5040-.4536.9576-.9576.9576h-10.0800c-.5040 0-.9576-.4536-.9576-.9576v-10.0800c0-.5040.4536-.9576.9576-.9576h1.512c.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302v-.5040c0-.5040.4536-.9576.9576-.9576h1.512c.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302v-.5040c0-.5040.4536-.9576.9576-.9576h1.512c.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302v-.5040c0-.5040.4536-.9576.9576-.9576h1.512c.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302v-.5040c0-.5040.4536-.9576.9576-.9576h1.512c.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302v-.5040c0-.5040.4536-.9576.9576-.9576h1.512c.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302z"/>
+                    </svg>
+                </div>
+                <h3>Discord</h3>
+                <p>Gaming community hub</p>
+            </a>
+            <a href="https://github.com/lalitmahara69" class="platform-card">
+                <div class="platform-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </div>
+                <h3>GitHub</h3>
+                <p>Code & projects</p>
+            </a>
+            <a href="https://x.com/creative_lalit7" class="platform-card">
+                <div class="platform-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.207-6.811-5.979 6.811h-3.308l7.734-8.835-8.17-10.665h6.588l4.753 6.276 5.484-6.276zM17.534 20.766h1.885L6.456 3.75H4.429l13.105 17.016z"/>
+                    </svg>
+                </div>
+                <h3>X (Twitter)</h3>
+                <p>Gaming thoughts & news</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Content Creator Spotlight -->
+    <section class="creator-spotlight" id="content">
+        <div class="spotlight-header">
+            <h2>Content & Expertise</h2>
+            <p>Creating meaningful experiences across multiple platforms - from gaming highlights to community building and digital content creation.</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="content-card">
+                <span class="content-type">Gaming</span>
+                <h3>Gaming Content</h3>
+                <p>Creating engaging gaming videos, streams, and content that entertains and brings the gaming community together.</p>
+            </div>
+
+            <div class="content-card">
+                <span class="content-type">Community</span>
+                <h3>Community Building</h3>
+                <p>Building and nurturing a vibrant gaming community with 743+ members on Discord and thousands across platforms.</p>
+            </div>
+
+            <div class="content-card">
+                <span class="content-type">Digital</span>
+                <h3>Digital Creation</h3>
+                <p>Crafting digital content across multiple platforms including social media, streaming, and interactive experiences.</p>
+            </div>
+
+            <div class="content-card">
+                <span class="content-type">Streaming</span>
+                <h3>Live Streaming</h3>
+                <p>Engaging live streams on YouTube and other platforms, bringing real-time gaming action and community interaction.</p>
+            </div>
+
+            <div class="content-card">
+                <span class="content-type">Development</span>
+                <h3>Web Development</h3>
+                <p>Leveraging coding skills to build projects and tools for the gaming and creator community.</p>
+            </div>
+
+            <div class="content-card">
+                <span class="content-type">Collaboration</span>
+                <h3>Collaborations</h3>
+                <p>Working with fellow creators and brands to create unique content and expand reach across communities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2>Skills & Tools</h2>
+        
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>🎮 Gaming</h3>
+                <span class="skill-tag">FPS Games</span>
+                <span class="skill-tag">Strategy Games</span>
+                <span class="skill-tag">Competitive Gaming</span>
+                <span class="skill-tag">Game Analysis</span>
+            </div>
+
+            <div class="skill-category">
+                <h3>📱 Content Creation</h3>
+                <span class="skill-tag">Video Editing</span>
+                <span class="skill-tag">Streaming</span>
+                <span class="skill-tag">Thumbnails</span>
+                <span class="skill-tag">Audio Production</span>
+            </div>
+
+            <div class="skill-category">
+                <h3>💻 Technical</h3>
+                <span class="skill-tag">Web Development</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Git & GitHub</span>
+            </div>
+
+            <div class="skill-category">
+                <h3>👥 Community</h3>
+                <span class="skill-tag">Community Management</span>
+                <span class="skill-tag">Moderation</span>
+                <span class="skill-tag">Engagement</span>
+                <span class="skill-tag">Brand Building</span>
+            </div>
+
+            <div class="skill-category">
+                <h3>🎨 Design</h3>
+                <span class="skill-tag">Social Media Design</span>
+                <span class="skill-tag">Logo Design</span>
+                <span class="skill-tag">UI/UX Basics</span>
+                <span class="skill-tag">Brand Identity</span>
+            </div>
+
+            <div class="skill-category">
+                <h3>🌐 Digital Marketing</h3>
+                <span class="skill-tag">Social Media</span>
+                <span class="skill-tag">Influencer Outreach</span>
+                <span class="skill-tag">Audience Growth</span>
+                <span class="skill-tag">Analytics</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Let's Connect!</h2>
+        <p>Want to collaborate, chat, or just say hi? Reach out through any of my platforms. I'm always open to gaming discussions, collaborations, and meeting fellow creators!</p>
+        
+        <div class="social-links">
+            <a href="https://www.instagram.com/asce.exc" class="social-btn" title="Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849s.013-3.583.07-4.849c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.646-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.016-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+                </svg>
+            </a>
+            <a href="https://www.youtube.com/@ascekr" class="social-btn" title="YouTube">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+            </a>
+            <a href="https://www.facebook.com/creativelalit07" class="social-btn" title="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="https://discord.gg/dFHabYy49Y" class="social-btn" title="Discord">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                    <path d="M20.317 4.3671c-1.8345-.9037-3.8014-1.5486-5.8583-1.7987-.0207-.0042-.0414-.0081-.0621-.0126-.2662-.0536-.5324-.1068-.7986-.1598-.2662-.0536-.5324-.1068-.7986-.1598-1.6414-.3288-3.282-.6576-4.9229-.9864-1.0682-.2138-2.1363-.4276-3.2045-.6414 0-.0168-.0084-.0336-.0168-.0504-.9352-.1868-1.8704-.3735-2.8056-.5603l-1.397-.2798c-.3494-.0699-.6988-.1399-1.0482-.2098-.0504-.0101-.1008-.0202-.1512-.0303-.1512-.0303-.3024-.0605-.4536-.0908-.3024-.0605-.6047-.121-.9071-.1815-.3024-.0605-.6047-.121-.9071-.1815-1.1286-.2258-2.2572-.4516-3.3858-.6774-2.3758-.4756-4.7516-.9512-7.1274-1.4268 0-.0336-.0168-.0672-.0504-.1008-.1008-.2016-.2016-.4032-.3024-.6048-.3528-.7056-.7056-1.4112-1.0584-2.1168l-.504-1.008c-.0168-.0336-.0504-.0672-.0504-.1008 0-.0168.0168-.0336.0504-.0336.504.0504 1.008.1008 1.512.1512.0504 0 .0899.0099.1294.0198.5544.0555 1.1088.111 1.6632.1665.3024.0302 .6048.0605.9071.0908.504.0504.9071.0908 1.3102.1312 0 .0 .0084.0084.0168.0084.6048.0605 1.2096.121 1.8144.1815.3024.0302.6048.0605.9071.0908.504.0504 1.0080.1008 1.512.1512 1.3104.1312 2.6208.2624 3.9312.3936.3024.0302.6048.0605.9071.0908.504.0504 1.0080.1008 1.512.1512 1.3104.1312 2.6208.2624 3.9312.3936.3024.0302.6048.0605.9071.0908.504.0504 1.0080.1008 1.512.1512l2.6208.2624c1.3104.1312 2.6208.2624 3.9312.3936.3024.0302.6048.0605.9071.0908.504.0504 1.0080.1008 1.512.1512 1.3104.1312 2.6208.2624 3.9312.3936.3024.0302.6048.0605.9071.0908.504.0504 1.0080.1008 1.512.1512.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302v1.0080c0 .5040-.4536.9576-.9576.9576h-1.5120c-.0504 0-.1008-.0101-.1512-.0202l-.5544-1.1088c-.0504-.1008-.1512-.1512-.2520-.1512h-.5544c-.1008 0-.2016.0504-.2520.1512l-.5544 1.1088c-.0504.1008-.1512.1512-.2520.1512h-2.0160c-.0504 0-.1008-.0101-.1512-.0202-.0504-.0101-.1008-.0202-.1512-.0302v.5040c0 .5040-.4536.9576-.9576.9576h-1.512c-.0504 0-.1008-.0101-.1512-.0202-.0504-.0101-.1008-.0202-.1512-.0302v.5040c0 .5040-.4536.9576-.9576.9576h-1.512c-.0504 0-.1008-.0101-.1512-.0202-.0504-.0101-.1008-.0202-.1512-.0302v.5040c0 .5040-.4536.9576-.9576.9576h-1.512c-.0504 0-.1008-.0101-.1512-.0202-.0504-.0101-.1008-.0202-.1512-.0302v.5040c0 .5040-.4536.9576-.9576.9576h-1.512c-.0504 0-.1008-.0101-.1512-.0202-.0504-.0101-.1008-.0202-.1512-.0302v.5040c0 .5040-.4536.9576-.9576.9576h-1.512c-.0504 0-.1008-.0101-.1512-.0202-.0504-.0101-.1008-.0202-.1512-.0302v.5040c0 .5040-.4536.9576-.9576.9576h-10.0800c-.5040 0-.9576-.4536-.9576-.9576v-10.0800c0-.5040.4536-.9576.9576-.9576h1.512c.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302v-.5040c0-.5040.4536-.9576.9576-.9576h1.512c.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302v-.5040c0-.5040.4536-.9576.9576-.9576h1.512c.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302v-.5040c0-.5040.4536-.9576.9576-.9576h1.512c.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302v-.5040c0-.5040.4536-.9576.9576-.9576h1.512c.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302v-.5040c0-.5040.4536-.9576.9576-.9576h1.512c.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302v-.5040c0-.5040.4536-.9576.9576-.9576h1.512c.0504 0 .1008.0101.1512.0202.0504.0101.1008.0202.1512.0302z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/lalitmahara69" class="social-btn" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+            <a href="https://x.com/creative_lalit7" class="social-btn" title="X (Twitter)">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.207-6.811-5.979 6.811h-3.308l7.734-8.835-8.17-10.665h6.588l4.753 6.276 5.484-6.276zM17.534 20.766h1.885L6.456 3.75H4.429l13.105 17.016z"/>
+                </svg>
+            </a>
+        </div>
+
+        <a href="https://discord.gg/dFHabYy49Y" class="btn">Join Our Community</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2017 ASCE - Gaming Content Creator. Built with passion. 🐝</p>
+        <p>Based in KOREA  | Covering Global Content 🌎</p>
+    </footer>
+</body>
+</html>
