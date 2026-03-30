@@ -2,8 +2,7 @@
 
 This is my personal portfolio website.
 
-🌐 Live site: https://ascecxc.github.io/asce-portfolio
-
+🌐 Live site: https://asceexc.github.io/asce-portfolio/
 ## About
 Gaming enthusiast, content creator, and digital designer based in Korea 🇰🇷
 
